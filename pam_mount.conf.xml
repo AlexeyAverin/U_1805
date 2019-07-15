@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE pam_mount SYSTEM "pam_mount.conf.xml.dtd">
+<pam_mount>
+
+	<debug enable="1" />
+	<volume fstype="cifs" 
+		server="main.lawyers.loc" path="Адвокат" mountpoint="/home/LAWYERS/%(USER)/Адвокат на MAIN"
+		options="user=%(DOMAIN_USER),cruid=%(USERUID),sec=krb5i,file_mode=0777,dir_mode=0777,iocharset=utf8" />
+	<volume fstype="cifs" 
+		server="main2.lawyers.loc" path="consultant" mountpoint="/home/LAWYERS/%(USER)/Consultant на MAIN2"
+		options="user=%(DOMAIN_USER),cruid=%(USERUID),sec=krb5i,file_mode=0777,dir_mode=0777,iocharset=utf8" />
+	<mntoptions allow="*" />
+	<mntoptions require="nosuid,nodev" />
+	<logout wait="500000" hup="1" term="1" kill="1" />
+	<msg-authpw>Пароль:</msg-authpw>
+	<mkmountpoint enable="1" remove="true" />
+
+</pam_mount>

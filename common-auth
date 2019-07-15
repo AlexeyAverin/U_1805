@@ -1,0 +1,8 @@
+#auth	required			pam_mount.so
+auth	sufficient			pam_krb5.so minimum_uid=1000 try_first_pass
+auth	sufficient			pam_unix.so nullok_secure try_first_pass
+auth	sufficient			pam_winbind.so krb5_auth krb5_ccache_type=FILE cached_login try_first_pass
+auth	requisite			pam_deny.so
+auth	required			pam_permit.so
+auth	optional			pam_cap.so 
+
